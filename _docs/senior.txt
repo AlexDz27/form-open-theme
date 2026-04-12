@@ -1,0 +1,4 @@
+Git. Situation from here:
+  - https://chat.deepseek.com/a/chat/s/5112a872-35a1-46fa-bdf4-6c315ea8bfe1
+
+When to merge and when to rebase?  
