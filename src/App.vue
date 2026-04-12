@@ -1,34 +1,45 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const formState = ref({
+  topic: null,
+  comments: null
+})
+
+function submitForm() {
+  console.log(formState.value)
+}
+</script>
 
 <template>
   <main class="cont">
     <h1 class="c" style="margin-bottom: 3rem; font-size: 1.7rem;">Анонимный опрос: Желаемая тема для личного проекта на открытом уроке</h1>
 
-    <form @submit.prevent>
+    <form @submit.prevent="submitForm">
       <div class="form-field">
         1. Какую программу ты хочешь использовать для своего проекта?
         <ul>
           <li>
             <label>
-              <input name="topic" value="Scratch" type="radio">
+              <input v-model="formState.topic" value="Scratch" type="radio">
               Scratch
             </label>
           </li>
           <li>
             <label>
-              <input name="topic" value="Construct 2" type="radio">
+              <input v-model="formState.topic" value="Construct 2" type="radio">
               Construct 2
             </label>
           </li>
           <li>
             <label>
-              <input name="topic" value="Figma" type="radio">
+              <input v-model="formState.topic" value="Figma" type="radio">
               Figma
             </label>
           </li>
           <li>
             <label>
-              <input name="topic" value="HTML&CSS" type="radio">
+              <input v-model="formState.topic" value="HTML&CSS" type="radio">
               HTML&CSS
             </label>
           </li>
@@ -41,7 +52,7 @@
           У тебя есть какие-то мысли насчёт личного проекта? Можешь тут поделиться.<br>
           Может, хочется сделать несколько проектов? Опиши свои пожелания.
         </p>
-        <textarea name="comments" class="textarea"></textarea>
+        <textarea v-model="formState.comments" class="textarea"></textarea>
       </div>
 
       <button class="btn form-btn" type="submit">Отправить</button>
