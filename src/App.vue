@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 
+const topics = [
+  'Scratch',
+  'Construct 2',
+  'Figma',
+  'HTML&CSS',
+]
+
 const formState = ref({
   topic: null,
   comments: null
@@ -19,28 +26,10 @@ function submitForm() {
       <div class="form-field">
         1. Какую программу ты хочешь использовать для своего проекта?
         <ul>
-          <li>
+          <li v-for="topic of topics">
             <label>
-              <input v-model="formState.topic" value="Scratch" type="radio">
-              Scratch
-            </label>
-          </li>
-          <li>
-            <label>
-              <input v-model="formState.topic" value="Construct 2" type="radio">
-              Construct 2
-            </label>
-          </li>
-          <li>
-            <label>
-              <input v-model="formState.topic" value="Figma" type="radio">
-              Figma
-            </label>
-          </li>
-          <li>
-            <label>
-              <input v-model="formState.topic" value="HTML&CSS" type="radio">
-              HTML&CSS
+              <input v-model="formState.topic" :value="topic" type="radio">
+              {{ topic }}
             </label>
           </li>
         </ul>
