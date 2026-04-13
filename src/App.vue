@@ -8,13 +8,16 @@ const topics = [
   'HTML&CSS',
 ]
 
-const formState = ref({
+const formState = ref('NOT_SENT')  // NOT_SENT | SENT
+const formFields = ref({
   topic: null,
   comments: null
 })
 
 function submitForm() {
-  console.log(formState.value)
+  console.log(formFields.value)
+
+  formState.value = 'SENT'
 }
 </script>
 
@@ -22,13 +25,13 @@ function submitForm() {
   <main class="cont">
     <h1 class="c" style="margin-bottom: 3rem; font-size: 1.7rem;">Анонимный опрос: Желаемая тема для личного проекта на открытом уроке</h1>
 
-    <form @submit.prevent="submitForm">
+    <form v-if="formState === 'NOT_SENT'" @submit.prevent="submitForm">
       <div class="form-field">
         1. Какую программу ты хочешь использовать для своего проекта?
         <ul>
           <li v-for="topic of topics">
             <label>
-              <input v-model="formState.topic" :value="topic" type="radio">
+              <input v-model="formFields.topic" :value="topic" type="radio">
               {{ topic }}
             </label>
           </li>
@@ -41,10 +44,13 @@ function submitForm() {
           У тебя есть какие-то мысли насчёт личного проекта? Можешь тут поделиться.<br>
           Может, хочется сделать несколько проектов? Опиши свои пожелания.
         </p>
-        <textarea v-model="formState.comments" class="textarea"></textarea>
+        <textarea v-model="formFields.comments" class="textarea"></textarea>
       </div>
 
       <button class="btn form-btn" type="submit">Отправить</button>
     </form>
+    <section v-else-if="formState === 'SENT'">
+      <h1>Sent</h1>
+    </section>
   </main>
 </template>
