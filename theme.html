@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="ru"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> <title>АвтоМастер | Ремонт и запчасти</title> <!-- Подключение простого шрифта для чистоты --> <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet"> <style> * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fc;
+    color: #1e293b;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #0f172a;
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  
+  .logo p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+  }
+  
+  .nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    margin-left: 28px;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  
+  .nav a:hover {
+    color: #facc15;
+  }
+  
+  /* Кнопки */
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background-color: #facc15;
+    color: #0f172a;
+    box-shadow: 0 4px 8px rgba(250,204,21,0.3);
+  }
+  
+  .btn-primary:hover {
+    background-color: #eab308;
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline {
+    border: 2px solid #facc15;
+    color: #facc15;
+    background: transparent;
+  }
+  
+  .btn-outline:hover {
+    background-color: #facc15;
+    color: #0f172a;
+  }
+  
+  /* Hero секция */
+  .hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+  }
+  
+  .hero-grid {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  
+  .hero-text {
+    flex: 1;
+  }
+  
+  .hero-text h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #0f172a;
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+    color: #334155;
+    margin-bottom: 32px;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .hero-image {
+    flex: 1;
+    background: #cbd5e1;
+    border-radius: 32px;
+    padding: 20px;
+    text-align: center;
+    background: #1e293b;
+    color: white;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+  }
+  
+  /* Услуги */
+  .services {
+    padding: 80px 0;
+    background: white;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  
+  .section-sub {
+    text-align: center;
+    color: #475569;
+    max-width: 700px;
+    margin: 0 auto 48px auto;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+  }
+  
+  .card {
+    background: #f8fafc;
+    border-radius: 28px;
+    padding: 32px 24px;
+    flex: 1 1 280px;
+    text-align: center;
+    transition: 0.2s;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+    border-color: #facc15;
+  }
+  
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  
+  /* Закупка запчастей */
+  .procurement {
+    background: #0f172a;
+    color: white;
+    padding: 80px 0;
+  }
+  
+  .procurement-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: center;
+  }
+  
+  .procurement-text {
+    flex: 1;
+  }
+  
+  .procurement-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .procurement-text ul {
+    list-style: none;
+    margin: 24px 0;
+  }
+  
+  .procurement-text li {
+    margin-bottom: 12px;
+    padding-left: 28px;
+    position: relative;
+  }
+  
+  .procurement-text li::before {
+    content: "✔";
+    color: #facc15;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  .procurement-image {
+    flex: 1;
+    background: #334155;
+    border-radius: 28px;
+    padding: 48px 24px;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Почему мы */
+  .why-us {
+    padding: 80px 0;
+    background: #ffffff;
+  }
+  
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .feature {
+    flex: 1 1 200px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .feature .number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #facc15;
+  }
+  
+  /* Контакт */
+  .contact {
+    background: #eef2ff;
+    padding: 80px 0;
+  }
+  
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .contact-info {
+    flex: 1;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  
+  .contact-detail {
+    margin: 24px 0;
+    font-size: 1.1rem;
+  }
+  
+  .contact-detail p {
+    margin: 12px 0;
+  }
+  
+  .contact-form {
+    flex: 1;
+    background: white;
+    padding: 32px;
+    border-radius: 32px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  input, textarea, select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 28px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    border-color: #facc15;
+    box-shadow: 0 0 0 3px rgba(250,204,21,0.2);
+  }
+  
+  button[type="submit"] {
+    background: #0f172a;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    font-weight: 700;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  button[type="submit"]:hover {
+    background: #facc15;
+    color: #0f172a;
+  }
+  
+  footer {
+    background: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 32px 0;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h2 {
+      font-size: 2.2rem;
+    }
+    .nav a {
+      margin-left: 16px;
+    }
+    .header-inner {
+      flex-direction: column;
+    }
+  }
+</style>
+
+</head> <body><header class="header"> <div class="container header-inner"> <div class="logo"> <h1>AutoMaster<span style="color:#facc15;">Pro</span></h1> <p>Ремонт и запчасти — по совести</p> </div> <div class="nav"> <a href="#services">Услуги</a> <a href="#procurement">Запчасти</a> <a href="#contact">Контакты</a> </div> </div> </header><main> <!-- Hero блок --> <section class="hero"> <div class="container hero-grid"> <div class="hero-text"> <h2>Чиним авто <span style="color:#facc15;">профессионально</span><br>И закупаем запчасти дёшево</h2> <p>Диагностика, ремонт любой сложности, заказ оригинальных и аналоговых запчастей под ключ. Экономь время и деньги с нами.</p> <div class="hero-buttons"> <a href="#contact" class="btn btn-primary">Записаться на ремонт</a> <a href="#procurement" class="btn btn-outline">Подобрать запчасти</a> </div> </div> <div class="hero-image"> 🔧 Ваш автомобиль в надёжных руках 🚗 </div> </div> </section> <!-- Услуги ремонта --> <section id="services" class="services"> <div class="container"> <h2 class="section-title">Наши услуги по ремонту</h2> <p class="section-sub">Комплексное обслуживание любых марок — от диагностики до сложного ремонта</p> <div class="cards"> <div class="card"> <div class="card-icon">🔍</div> <h3>Диагностика</h3> <p>Компьютерная и визуальная диагностика двигателя, ходовой, электроники. Точный вердикт без накруток.</p> </div> <div class="card"> <div class="card-icon">⚙️</div> <h3>Ремонт ДВС и КПП</h3> <p>Капитальный и текущий ремонт двигателей, коробок передач (механика, автомат, вариатор).</p> </div> <div class="card"> <div class="card-icon">🛞</div> <h3>Ходовая часть</h3> <p>Замена амортизаторов, рычагов, сайлентблоков, рулевых тяг — вернём управляемость.</p> </div> <div class="card"> <div class="card-icon">💡</div> <h3>Электрика</h3> <p>Поиск утечек тока, ремонт генератора, стартера, замена проводки и датчиков.</p> </div> </div> </div> </section> <!-- Закупка запчастей (спецблок) --> <section id="procurement" class="procurement"> <div class="container procurement-inner"> <div class="procurement-text"> <h2>🚚 Закупка запчастей «под ключ»</h2> <p>Мы поможем найти и привезти любые детали — от болта до двигателя. Экономим ваши нервы и бюджет.</p> <ul> <li>Оригинальные запчасти (OEM) и качественные аналоги</li> <li>Заказ с официальных складов и из Европы/Азии</li> <li>Проверка на совместимость по VIN коду</li> <li>Бесплатная консультация по подбору</li> <li>Скидка на работу при заказе запчастей у нас</li> </ul> <a href="#contact" class="btn btn-primary" style="background:#facc15; color:#0f172a;">Заказать запчасти</a> </div> <div class="procurement-image"> 📦 Прямые поставки запчастей<br> 🔧 Оригинал и аналоги<br> ✈️ Быстрая доставка </div> </div> </section> <!-- Почему мы (блок преимуществ) --> <section class="why-us"> <div class="container"> <h2 class="section-title">Почему выбирают нас?</h2> <p class="section-sub">Честный сервис без скрытых платежей</p> <div class="features"> <div class="feature"> <div class="number">100+</div> <h4>Авто в месяц</h4> <p>Опыт работы с разными марками</p> </div> <div class="feature"> <div class="number">12 мес</div> <h4>Гарантия</h4> <p>На все виды работ и запчасти</p> </div> <div class="feature"> <div class="number">24/7</div> <h4>Поддержка</h4> <p>Проконсультируем даже в выходные</p> </div> <div class="feature"> <div class="number">📉</div> <h4>Цена от поставщика</h4> <p>Без наценок на запчасти</p> </div> </div> </div> </section> <!-- Контактная форма --> <section id="contact" class="contact"> <div class="container contact-grid"> <div class="contact-info"> <h3>Свяжитесь с нами</h3> <p>Оставьте заявку, и мы перезвоним в течение 15 минут, чтобы уточнить детали ремонта или подобрать запчасти.</p> <div class="contact-detail"> <p>📞 +7 (999) 123-45-67</p> <p>✉️ info@automasterpro.ru</p> <p>📍 г. Москва, ул. Автомастерская, 15</p> <p>⏰ Пн-Пт: 9:00–20:00, Сб: 10:00–16:00</p> </div> </div> <div class="contact-form"> <form action="#" method="post"> <div class="input-group"> <input type="text" placeholder="Ваше имя" required> </div> <div class="input-group"> <input type="tel" placeholder="Номер телефона *" required> </div> <div class="input-group"> <select> <option value="">— Выберите услугу —</option> <option>Ремонт авто</option> <option>Закупка запчастей</option> <option>Диагностика</option> <option>Другое</option> </select> </div> <div class="input-group"> <textarea rows="3" placeholder="Марка авто, проблема или список запчастей..."></textarea> </div> <button type="submit">Отправить заявку →</button> <p style="font-size: 12px; margin-top: 12px; color:#64748b;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p> </form> </div> </div> </section> </main><footer> <div class="container"> <p>© 2025 AutoMasterPro — ремонт авто и профессиональная закупка запчастей. Работаем для вас.</p> </div> </footer><!-- Небольшой скрипт для имитации отправки формы (без реального бэкенда, просто алерт) --><script> document.querySelector('form')?.addEventListener('submit', function(e) { e.preventDefault(); alert('✅ Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.'); this.reset(); }); </script></body> </html>
