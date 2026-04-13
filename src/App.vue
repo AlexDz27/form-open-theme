@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 
 const topics = [
+  'Kodu',
   'Scratch',
-  'Construct 2',
-  'Figma',
-  'HTML&CSS',
+  'PowerPoint',
+  'Construct 3',
 ]
 
 const formState = ref({
