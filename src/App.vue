@@ -2,10 +2,9 @@
 import { ref } from 'vue'
 
 const topics = [
+  'Scratch JR',
   'Scratch',
-  'Construct 2',
-  'Figma',
-  'HTML&CSS',
+  'Kodu',
 ]
 
 const formState = ref({
